@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shortest Path Finder</title>
+    <style>
+        #container {
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            width: 400px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-family: Arial, sans-serif;
+            font-size: 36px;
+            color: white;
+            text-align: center;
+            margin-top: 50px;
+            text-shadow: 2px 2px #000000;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: #3e8e41;
+        }
+        
+        canvas {
+            border: 1px solid black;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h1>Shortest Path Finder</h1>
+        <form>
+            <label for="width">Width:</label>
+            <input type="number" id="width" name="width" min="20" max="400" value="400">
+            <br>
+            <label for="height">Height:</label>
+            <input type="number" id="height" name="height" min="20" max="400" value="400">
+            <br>
+            <button type="button" onclick="resizeCanvas()">Resize Canvas</button>
+        </form>
+        <p>20 = 1 grid</p>
+        <canvas id="canvas" width="400" height="400"></canvas>
+        <br>
+        <div>
+            <button onclick="findPath('euclidean')">Find Shortest Path (Euclidean)</button>
+            <button onclick="findPath('manhattan')">Find Shortest Path (Manhattan)</button>
+            <button onclick="location.reload()">Clear</button>
+        </div>
+    </div>
+
+    <script src="pathfinder.js"></script>
+    <script>
+        function resizeCanvas() {
+            const width = document.getElementById('width').value;
+            const height = document.getElementById('height').value;
+            const canvas = document.getElementById('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            BLOCK_SIZE = canvas.width / ROWS;
+            clearCanvas();
+            drawGrid();
+            drawStartEnd();
+            drawWalls();
+        }
+    </script>
+</body>
+
+</html>
