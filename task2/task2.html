@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Clustered Point Canvas</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        td {
+            width: 20px;
+            height: 20px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Clustered Point Canvas</h1>
+    <form>
+        <label for="canvasSize">Canvas Size:</label>
+        <input type="number" id="canvasSize" name="canvasSize" min="30" max="400" value="200">
+        <br>
+        <label for="numClusters">Number of Clusters:</label>
+        <input type="number" id="numClusters" name="numClusters" min="1" max="10" value="3">
+        <br>
+        <button type="button" onclick="createCanvas()">Create Canvas</button>
+    </form>
+    <br>
+    <div id="canvasContainer"></div>
+    <br>
+    <button onclick="clusterPoints()">Cluster Points</button>
+    <button onclick="clearCanvas()">Clear Canvas</button>
+    <script src="script.js"></script>
+</body>
+
+</html>
